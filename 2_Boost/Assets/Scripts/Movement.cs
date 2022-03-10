@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Movement : Levels
 {
     Rigidbody rb;
     [SerializeField] float thrustPower = 1000f;
@@ -28,6 +26,8 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             StartTrhusting();
+        Debug.Log(collisionEnabled);
+
         }
         else 
         {

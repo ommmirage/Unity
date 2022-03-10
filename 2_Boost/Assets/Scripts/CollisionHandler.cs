@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class CollisionHandler : MonoBehaviour
+public class CollisionHandler : Levels
 {
     [SerializeField] ParticleSystem successParticles;
     [SerializeField] ParticleSystem explosionParticles;
@@ -13,7 +12,7 @@ public class CollisionHandler : MonoBehaviour
 
     void OnCollisionEnter(Collision other) 
     {
-        if (isTransitioning) { return; }
+        if (isTransitioning || !Levels.collisionEnabled) { return; }
 
         switch (other.gameObject.tag)
         {
@@ -52,18 +51,5 @@ public class CollisionHandler : MonoBehaviour
         GetComponent<Movement>().enabled = false;
         successParticles.Play();
         Invoke("LoadNextLevel", 0.5f);
-    }
-
-    void ReloadLevel()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
-    }
-
-    void LoadNextLevel()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = currentSceneIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
     }
 }
