@@ -6,15 +6,16 @@ public class Movement : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField] float thrustPower = 1000f;
-    [SerializeField] float rotationPower = 100f;
+    [SerializeField] float rotationPower = 60f;
+    [SerializeField] ParticleSystem jetParticles;
+    [SerializeField] ParticleSystem leftTrusterParticles;
+    [SerializeField] ParticleSystem rightTrusterParticles;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ProcessThrust();
@@ -26,7 +27,11 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            rb.AddRelativeForce(0, thrustPower * Time.deltaTime, 0);
+            StartTrhusting();
+        }
+        else 
+        {
+            jetParticles.Stop();
         }
     }
 
@@ -34,11 +39,43 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            Rotate(rotationPower);
+            RotateLeft();
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            Rotate(-rotationPower);
+            RotateRight();
+        }
+        else
+        {
+            leftTrusterParticles.Stop();
+            rightTrusterParticles.Stop();
+        }
+    }
+
+    private void StartTrhusting()
+    {
+        if (!jetParticles.isPlaying)
+        {
+            jetParticles.Play();
+        }
+        rb.AddRelativeForce(0, thrustPower * Time.deltaTime, 0);
+    }
+
+    private void RotateLeft()
+    {
+        Rotate(rotationPower);
+        if (!rightTrusterParticles.isPlaying)
+        {
+            rightTrusterParticles.Play();
+        }
+    }
+
+    private void RotateRight()
+    {
+        Rotate(-rotationPower);
+        if (!leftTrusterParticles.isPlaying)
+        {
+            leftTrusterParticles.Play();
         }
     }
 
