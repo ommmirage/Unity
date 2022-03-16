@@ -1698,17 +1698,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Ship
       objectReference: {fileID: 0}
-    - target: {fileID: 8047797317564021687, guid: 08a4cb82bac5c754a9a45a4422858c51, type: 3}
-      propertyPath: xRange
-      value: 10
+    - target: {fileID: 4837909378362960604, guid: 08a4cb82bac5c754a9a45a4422858c51, type: 3}
+      propertyPath: m_Name
+      value: Bullets L
       objectReference: {fileID: 0}
-    - target: {fileID: 8047797317564021687, guid: 08a4cb82bac5c754a9a45a4422858c51, type: 3}
-      propertyPath: yRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047797317564021687, guid: 08a4cb82bac5c754a9a45a4422858c51, type: 3}
-      propertyPath: controllSpeed
-      value: 30.9
+    - target: {fileID: 6581872045228281071, guid: 08a4cb82bac5c754a9a45a4422858c51, type: 3}
+      propertyPath: m_Name
+      value: Bullets R
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08a4cb82bac5c754a9a45a4422858c51, type: 3}
