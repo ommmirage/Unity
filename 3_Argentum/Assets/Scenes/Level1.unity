@@ -200,6 +200,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!198 &479334376 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8142756692278765672, guid: 8d97ba6dfe2688f4c884550b8076058b, type: 3}
+  m_PrefabInstance: {fileID: 8013576511414827275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1688131389
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1832,5 +1837,9 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.63
       objectReference: {fileID: 0}
+    - target: {fileID: 9222073897351221224, guid: 8d97ba6dfe2688f4c884550b8076058b, type: 3}
+      propertyPath: explosionParticles
+      value: 
+      objectReference: {fileID: 479334376}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d97ba6dfe2688f4c884550b8076058b, type: 3}
