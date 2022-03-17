@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5676412964980009015}
   - component: {fileID: 6357133554239593577}
   m_Layer: 0
-  m_Name: Bullets
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -860,7 +860,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
@@ -3986,7 +3986,7 @@ ParticleSystem:
     ribbonCount: 1
     shadowBias: 1
     worldSpace: 1
-    dieWithParticles: 1
+    dieWithParticles: 0
     sizeAffectsWidth: 0
     sizeAffectsLifetime: 0
     inheritParticleColor: 1

@@ -2,14 +2,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float controllSpeed = 10f;
+    [Header("General Setup Settings")]
+    [Tooltip("How fast ship moves up and down based upon player input")]
+    [SerializeField] float controlSpeed = 10f;
+    [Tooltip("Max x axis deviation")]
     [SerializeField] float xRange = 10f;
+    [Tooltip("Max y axis deviation")]
     [SerializeField] float yRange = 10f;
 
-    [SerializeField] float yPositionFactor = -2f;
-    [SerializeField] float xPositionFactor = 2f;
+    [Header("Screen position based tuning")]
+    [SerializeField] float positionPitchFactor = -2f;
+    [SerializeField] float positionYawFactor = 2f;
+
+    [Header("Player input based tuning")]
     [SerializeField] float controlPitchFactor = -10f;
     [SerializeField] float controlRollFactor = -20f;
+
+    [Header("Gun array")]
+    [Tooltip("Add all player guns here")]
+    [SerializeField] GameObject[] guns;
 
     float xThrow;
     float yThrow;
@@ -18,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         ProcessTranslation();
         ProcessRotation();
+        ProcessFiring();
     }
 
     void ProcessTranslation()
@@ -25,11 +37,11 @@ public class PlayerController : MonoBehaviour
         xThrow = Input.GetAxis("Horizontal");
         yThrow = Input.GetAxis("Vertical");
 
-        float xOffset = xThrow * Time.deltaTime * controllSpeed;
+        float xOffset = xThrow * Time.deltaTime * controlSpeed;
         float rawXPos = transform.localPosition.x + xOffset;
         float clampedXPos = Mathf.Clamp(rawXPos, -xRange, xRange);
 
-        float yOffset = yThrow * Time.deltaTime * controllSpeed;
+        float yOffset = yThrow * Time.deltaTime * controlSpeed;
         float rawYPos = transform.localPosition.y + yOffset;
         float clampedYPos = Mathf.Clamp(rawYPos, -yRange, yRange);
 
@@ -39,13 +51,35 @@ public class PlayerController : MonoBehaviour
 
     void ProcessRotation()
     {
-        float pitchDueToPosition = transform.localPosition.y * yPositionFactor;
+        float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
         float pitchDueToThrow = yThrow * controlPitchFactor;
 
         float pitch = pitchDueToPosition + pitchDueToThrow;
-        float yaw = transform.localPosition.x * xPositionFactor;
+        float yaw = transform.localPosition.x * positionYawFactor;
         float roll = xThrow * controlRollFactor;
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
+
+    void ProcessFiring()
+    {
+        if (Input.GetButton("Fire1"))
+        {
+            SetGunsActive(true);
+        }
+        else 
+        {
+            SetGunsActive(false);
+        }
+    }
+
+    void SetGunsActive(bool isActive)
+    {
+        foreach (GameObject gun in guns)
+            {
+                var emissionModule = gun.GetComponent<ParticleSystem>().emission;
+                emissionModule.enabled = isActive;
+            }
+    }
+    
 }
