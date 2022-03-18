@@ -1735,7 +1735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1840745197533255297, guid: 8d97ba6dfe2688f4c884550b8076058b, type: 3}
       propertyPath: CollisionModule.maxKillSpeed
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1840745197533255297, guid: 8d97ba6dfe2688f4c884550b8076058b, type: 3}
       propertyPath: CollisionModule.m_Bounce.scalar
@@ -1779,7 +1779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588698395735555534, guid: 8d97ba6dfe2688f4c884550b8076058b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6797552308461954163, guid: 8d97ba6dfe2688f4c884550b8076058b, type: 3}
       propertyPath: m_LocalPosition.z
