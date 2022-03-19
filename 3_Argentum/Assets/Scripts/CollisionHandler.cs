@@ -3,8 +3,15 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
+    PlayerController playerController;
+
     [SerializeField] float loadDelay = 2f;
     [SerializeField] ParticleSystem explosionParticles;
+
+    private void Start() 
+    {
+        playerController = GetComponent<PlayerController>();    
+    }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -16,6 +23,7 @@ public class CollisionHandler : MonoBehaviour
         GetComponent<PlayerController>().enabled = false;
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<BoxCollider>().enabled = false;
+        playerController.SetGunsActive(false);
         explosionParticles.Play();
         Invoke("ReloadLevel", loadDelay);
     }
