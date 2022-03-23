@@ -28,10 +28,6 @@ public class CollisionHandler : MonoBehaviour
         Invoke("ReloadLevel", loadDelay);
     }
 
-    private void OnParticleCollision(GameObject other) {
-        Debug.Log($"Particles collided with {other.gameObject.name}");
-    }
-
     void ReloadLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
