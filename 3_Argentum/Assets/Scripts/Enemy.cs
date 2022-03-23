@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
         GameObject vfx = Instantiate(explosionVFX, transform.position, Quaternion.identity);
         vfx.transform.parent = parentGameObject.transform;
         Destroy(gameObject);
+        scoreBoard.IncreaseScore(scorePerHit * 2);
     }
 
     void ProcessHit(Vector3 hitPosition)
