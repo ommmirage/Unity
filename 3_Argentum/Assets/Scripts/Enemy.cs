@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject explosionVFX;
     [SerializeField] GameObject hitVFX;
     [SerializeField] int scorePerHit = 10;
-    [SerializeField] int maxHp = 8;
+    [SerializeField] int maxHp = 6;
 
     int hp;
     GameObject parentGameObject;
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        ProcessHit(other.transform.position);
+        ProcessHit(transform.position);
         if (hp < 1)
         {
             Explode();
