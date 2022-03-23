@@ -1405,6 +1405,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: End Game
       objectReference: {fileID: 0}
+    - target: {fileID: 7252293002249263741, guid: 3d0ee3675cf00b14ea9aa677b6f5512c, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7252293002249263742, guid: 3d0ee3675cf00b14ea9aa677b6f5512c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -1540,6 +1544,10 @@ PrefabInstance:
     - target: {fileID: 7252293002659367962, guid: 3d0ee3675cf00b14ea9aa677b6f5512c, type: 3}
       propertyPath: m_Name
       value: Canvas With Glow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252293002659367962, guid: 3d0ee3675cf00b14ea9aa677b6f5512c, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8187701092019741209, guid: 3d0ee3675cf00b14ea9aa677b6f5512c, type: 3}

@@ -10,7 +10,7 @@ public class EndGame : MonoBehaviour
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
-        Invoke("endGame", 14);
+        Invoke("endGame", 15.5f);
     }
 
     void endGame()
