@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33606436300854868}
   - component: {fileID: 23158753764505530}
   m_Layer: 0
-  m_Name: StarSparrow11
+  m_Name: Big Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1664269169174470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 8035162054540153126}
   m_Father: {fileID: 0}
@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &254953369064447990
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,8 +551,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3864865290127402712}
-  m_LocalRotation: {x: -0.000000081439254, y: -0.022756845, z: -0.0000000018537927,
-    w: -0.9997411}
+  m_LocalRotation: {x: -0.000000081439254, y: -0.022756845, z: -0.0000000018537927, w: -0.9997411}
   m_LocalPosition: {x: -3.077999, y: 0.042239074, z: 0.91999817}
   m_LocalScale: {x: 0.9100001, y: 0.90999997, z: 0.91}
   m_Children: []
@@ -682,8 +683,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5430205498175281269}
-  m_LocalRotation: {x: 0.000000059629016, y: -0.022755608, z: -0.000000003262577,
-    w: 0.9997411}
+  m_LocalRotation: {x: 0.000000059629016, y: -0.022755608, z: -0.000000003262577, w: 0.9997411}
   m_LocalPosition: {x: 3.077999, y: 0.042239074, z: 0.92}
   m_LocalScale: {x: 0.90999997, y: 0.91, z: 0.90999997}
   m_Children: []

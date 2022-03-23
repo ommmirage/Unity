@@ -8,16 +8,17 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] GameObject explosionVFX;
     [SerializeField] GameObject hitVFX;
-    [SerializeField] Transform parent;
     [SerializeField] int scorePerHit = 10;
     [SerializeField] int maxHp = 8;
 
     int hp;
+    GameObject parentGameObject;
 
     void Start() 
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
         hp = Random.Range(1, maxHp);
+        parentGameObject = GameObject.FindWithTag("Spawn At Runtime");
     }
 
     private void OnParticleCollision(GameObject other)
@@ -32,7 +33,7 @@ public class Enemy : MonoBehaviour
     void Explode()
     {
         GameObject vfx = Instantiate(explosionVFX, transform.position, Quaternion.identity);
-        vfx.transform.parent = parent;
+        vfx.transform.parent = parentGameObject.transform;
         Destroy(gameObject);
     }
 
@@ -41,6 +42,6 @@ public class Enemy : MonoBehaviour
         hp--;
         scoreBoard.IncreaseScore(scorePerHit);
         GameObject vfx = Instantiate(hitVFX, hitPosition, Quaternion.identity);
-        vfx.transform.parent = parent;
+        vfx.transform.parent = parentGameObject.transform;
     }
 }
