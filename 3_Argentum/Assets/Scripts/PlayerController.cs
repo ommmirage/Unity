@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     float xThrow;
     float yThrow;
 
+    bool isPlayerControled = true;
+
     void Update()
     {
         ProcessTranslation();
@@ -34,9 +36,57 @@ public class PlayerController : MonoBehaviour
 
     void ProcessTranslation()
     {
+        if (isPlayerControled)
+        {
+            PlayerControlledTranslation();
+        }
+        else
+        {
+            CenterPlayerPosition();
+        }
+    }
+
+    void PlayerControlledTranslation()
+    {
         xThrow = Input.GetAxis("Horizontal");
         yThrow = Input.GetAxis("Vertical");
 
+        ProcessTranslation(xThrow, yThrow);
+    }
+
+    void CenterPlayerPosition()
+    {
+        if (transform.localPosition.x > 0.1)
+        {
+            xThrow = -0.2f;
+        }
+        else if (transform.localPosition.x < -0.1)
+        {
+            xThrow = 0.2f;
+        }
+        else
+        {
+            xThrow = 0;
+        }
+
+        if (transform.localPosition.y > 0.1)
+        {
+            yThrow = -0.2f;
+        }
+        else if (transform.localPosition.y < -0.1)
+        {
+            yThrow = 0.2f;
+        }
+        else
+        {
+            yThrow = 0;
+        }
+
+        ProcessTranslation(xThrow, yThrow);
+    }
+
+    void ProcessTranslation(float xThrow, float yThrow)
+    {
         float xOffset = xThrow * Time.deltaTime * controlSpeed;
         float rawXPos = transform.localPosition.x + xOffset;
         float clampedXPos = Mathf.Clamp(rawXPos, -xRange, xRange);
@@ -63,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     void ProcessFiring()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && isPlayerControled)
         {
             SetGunsActive(true);
         }
@@ -81,5 +131,10 @@ public class PlayerController : MonoBehaviour
                 emissionModule.enabled = isActive;
             }
     }
-    
+
+    public void TakeControl()
+    {
+        isPlayerControled = false;
+        SetGunsActive(false);
+    }
 }

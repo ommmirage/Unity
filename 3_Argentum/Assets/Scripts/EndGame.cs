@@ -17,14 +17,6 @@ public class EndGame : MonoBehaviour
     {
         endText = GetComponent<TMP_Text>();
         endText.text = "You win!";
-        CenterPlayer();
-        playerController.enabled = false;
-        playerController.SetGunsActive(false);
-    }
-
-    void CenterPlayer()
-    {
-        playerController.transform.localPosition = new Vector3();
-        playerController.transform.localRotation = new Quaternion();
+        playerController.TakeControl();
     }
 }
