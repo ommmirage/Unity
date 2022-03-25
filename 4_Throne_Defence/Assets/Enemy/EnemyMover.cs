@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
-    [SerializeField] float delay = 0.5f;
+    [SerializeField] float delay = 0.35f;
 
     void Start()
     {
