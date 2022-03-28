@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] int maxHp = 5;
-    int hp;
+    [SerializeField] int goldReward = 5;
+    [SerializeField] int goldPenalty = 25;
 
-    void OnEnable()
+    Bank bank;
+
+    void Start() 
     {
-        hp = maxHp;
+        bank = FindObjectOfType<Bank>();
     }
 
-    void OnParticleCollision(GameObject other) 
+    public void RewardGold()
     {
-        hp--;
-        Debug.Log(hp);
-        if (hp < 1)
-        {
-            gameObject.SetActive(false);
-        }
+        bank.Deposit(goldReward);
+    }
+
+    public void StealGold()
+    {
+        bank.Withdraw(goldPenalty);
     }
 }
