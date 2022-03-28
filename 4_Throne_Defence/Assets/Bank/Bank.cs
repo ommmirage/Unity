@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Bank : MonoBehaviour
 {
@@ -10,14 +9,18 @@ public class Bank : MonoBehaviour
     [SerializeField] int balance;
     public int Balance { get { return balance; } }
 
+    [SerializeField] TextMeshProUGUI displayBalance;
+
     void Awake() 
     {
         balance = startingBalance;
+        UpdateDisplay();
     }
 
     public void Deposit(int amount)
     {
         balance += amount;
+        UpdateDisplay();
     }
 
     public void Withdraw(int amount)
@@ -28,11 +31,18 @@ public class Bank : MonoBehaviour
         {
             GameOver();
         }
+
+        UpdateDisplay();
     }
 
     void GameOver()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.buildIndex);
+    }
+
+    void UpdateDisplay()
+    {
+        displayBalance.text = "Gold: " + balance;
     }
 }
