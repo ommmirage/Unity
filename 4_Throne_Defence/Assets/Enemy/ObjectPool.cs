@@ -44,7 +44,7 @@ public class ObjectPool : MonoBehaviour
     {
         foreach (GameObject enemy in pool)
         {
-            if (!enemy.activeSelf)
+            if (!enemy.activeInHierarchy)
             {
                 enemy.SetActive(true);
                 return;
