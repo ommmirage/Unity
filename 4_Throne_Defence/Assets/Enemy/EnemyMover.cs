@@ -8,7 +8,7 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] [Range(0, 10)] float speed = 5f;
     const float speedMultiplicator = 0.000001f;
 
-    void Start()
+    void OnEnable()
     {
         FindPath();
         ReturnToStart();
@@ -50,6 +50,6 @@ public class EnemyMover : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
