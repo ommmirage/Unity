@@ -16,7 +16,6 @@ public class Enemy1 : Enemy
     void OnParticleCollision(GameObject other) 
     {
         hp--;
-        Debug.Log(hp);
         if (hp < 1)
         {
             gameObject.SetActive(false);

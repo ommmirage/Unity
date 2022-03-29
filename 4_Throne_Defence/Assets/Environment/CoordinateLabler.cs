@@ -7,28 +7,64 @@ public class CoordinateLabler : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Color blockedColor = Color.gray;
+    Color pathColor = Color.yellow;
+
+    GridManager gridManager;
 
     TextMeshPro label;
     Vector2Int coordinates = new Vector2Int();
-    Waypoint waypoint;
 
     bool showLabels = true;
 
     void Awake() 
     {
+        gridManager = FindObjectOfType<GridManager>();
         label = GetComponent<TextMeshPro>();
-        waypoint = GetComponentInParent<Waypoint>();
+        label.enabled = false;
 
         DisplayCoordinates();
-        UpdateObjectName();
     }
 
     void Update()
     {
-        ToggleLabels();
-        if (showLabels)
+        if(!Application.isPlaying)
+       {
+           DisplayCoordinates();
+           UpdateObjectName();
+           label.enabled = true;
+       }
+
+       SetLabelColor();
+       ToggleLabels();
+    }
+
+    void ToggleLabels()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            SetLabelColor();
+            label.enabled = !label.IsActive();
+        }
+    }
+
+    void SetLabelColor()
+    {
+        if (gridManager == null) { return; }
+
+        Node node = gridManager.GetNode(coordinates);
+
+        if (node == null) { return; }
+
+        if (!node.isWalkable)
+        {
+            label.color = blockedColor;
+        }
+        else if (node.isPath)
+        {
+            label.color = pathColor;
+        }
+        else
+        {
+            label.color = defaultColor;
         }
     }
 
@@ -45,25 +81,5 @@ public class CoordinateLabler : MonoBehaviour
     void UpdateObjectName()
     {
         transform.parent.name = coordinates.ToString();
-    }
-
-    void ToggleLabels()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            label.enabled = !label.IsActive();
-        }
-    }
-
-    void SetLabelColor()
-    {
-        if (waypoint.IsPlaceble)
-        {
-            label.color = defaultColor;
-        }
-        else
-        {
-            label.color = blockedColor;
-        }
     }
 }
