@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Enemy))]
+[RequireComponent(typeof(Enemy1))]
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
     [SerializeField] [Range(0, 10)] float speed = 5f;
 
-    Enemy enemy;
+    Enemy1 enemy;
 
     const float speedMultiplicator = 0.000001f;
 
     private void Start() 
     {
-        enemy = FindObjectOfType<Enemy>();
+        enemy = FindObjectOfType<Enemy1>();
     }
 
     void OnEnable()

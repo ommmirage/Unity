@@ -1,18 +1,12 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Enemy))]
-public class EnemyHealth : MonoBehaviour
+public class Enemy1 : Enemy
 {
+    [SerializeField] int goldReward = 5;
+    [SerializeField] int goldPenalty = 25;
     [SerializeField] int maxHp = 5;
 
-    Enemy enemy;
-
     int hp;
-
-    void Start() 
-    {
-        enemy = GetComponent<Enemy>();
-    }
 
     void OnEnable()
     {
@@ -26,7 +20,17 @@ public class EnemyHealth : MonoBehaviour
         if (hp < 1)
         {
             gameObject.SetActive(false);
-            enemy.RewardGold();
+            RewardGold();
         }
+    }
+
+    public void StealGold()
+    {
+        base.StealGold(goldPenalty);
+    }
+
+    public void RewardGold()
+    {
+        base.RewardGold(goldReward);
     }
 }
