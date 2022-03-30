@@ -6,15 +6,13 @@ using TMPro;
 public class CoordinateLabler : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
-    [SerializeField] Color blockedColor = Color.gray;
+    [SerializeField] Color blockedColor = Color.black;
     Color pathColor = Color.yellow;
 
     GridManager gridManager;
 
     TextMeshPro label;
     Vector2Int coordinates = new Vector2Int();
-
-    bool showLabels = true;
 
     void Awake() 
     {
