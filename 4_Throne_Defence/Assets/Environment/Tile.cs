@@ -36,9 +36,12 @@ public class Tile : MonoBehaviour
     {
         if (gridManager.GetNode(coordinates).isWalkable && !pathfinder.WillBlockPath(coordinates))
         {
-            bool isPlaced = tower.CreateTower(tower, transform);
-            isPlaceble = !isPlaced;
-            gridManager.BlockNode(coordinates);
+            bool isSuccessful = tower.CreateTower(tower, transform);
+            if (isSuccessful)
+            {
+                gridManager.BlockNode(coordinates);
+                pathfinder.NotifyReceivers();
+            }
         }
     }
 
