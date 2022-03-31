@@ -31,24 +31,24 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnEnemy()
+    void EnableObjectInPool()
     {
-        while (true)
+        for(int i = 0; i < pool.Length; i++)
         {
-            EnableEnemyInPool();
-            yield return new WaitForSeconds(spawnTimer);
+            if(pool[i].activeInHierarchy == false)
+            {
+                pool[i].SetActive(true);
+                return;
+            }
         }
     }
 
-    void EnableEnemyInPool()
+    IEnumerator SpawnEnemy()
     {
-        foreach (GameObject enemy in pool)
+        while(true)
         {
-            if (!enemy.activeInHierarchy)
-            {
-                enemy.SetActive(true);
-                return;
-            }
+            EnableObjectInPool();
+            yield return new WaitForSeconds(spawnTimer);
         }
     }
 }

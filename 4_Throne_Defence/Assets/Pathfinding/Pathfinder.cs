@@ -30,8 +30,6 @@ public class Pathfinder : MonoBehaviour
             grid = gridManager.Grid;
             startNode = grid[startCoordinates];
             destinationNode = grid[destinationCoordinates];
-            startNode.isWalkable = true;
-            destinationNode.isWalkable = true;
         }
     }
 
@@ -44,7 +42,6 @@ public class Pathfinder : MonoBehaviour
     {
         gridManager.ResetNodes();
         BreadthFirstSearch();
-
         return BuildPath();
     }
 
@@ -75,6 +72,9 @@ public class Pathfinder : MonoBehaviour
 
     void BreadthFirstSearch()
     {
+        startNode.isWalkable = true;
+        destinationNode.isWalkable = true;
+
         frontier.Clear();
         reached.Clear();
 
@@ -86,7 +86,6 @@ public class Pathfinder : MonoBehaviour
         while (frontier.Count > 0 && isRunning)
         {
             currentSearchNode = frontier.Dequeue();
-
             currentSearchNode.isExplored = true;
             ExploreNeighbors();
 
@@ -101,15 +100,15 @@ public class Pathfinder : MonoBehaviour
     {
         List<Node> path = new List<Node>();
         Node currentNode = destinationNode;
-
-        currentNode.isPath = true;
+        
         path.Add(currentNode);
+        currentNode.isPath = true;
 
         while (currentNode.connectedTo != null)
         {
             currentNode = currentNode.connectedTo;
-            currentNode.isPath = true;
             path.Add(currentNode);
+            currentNode.isPath = true;
         }
 
         path.Reverse();
