@@ -61,7 +61,9 @@ public class Pathfinder : MonoBehaviour
 
         foreach (Node neighbor in neighbors)
         {
-            if (!reached.ContainsKey(neighbor.coordinates) && neighbor.isWalkable)
+            if (!reached.ContainsKey(neighbor.coordinates) && 
+                neighbor != null &&
+                neighbor.isWalkable)
             {
                 neighbor.connectedTo = currentSearchNode;
                 reached.Add(neighbor.coordinates, neighbor);
@@ -80,11 +82,19 @@ public class Pathfinder : MonoBehaviour
 
         bool isRunning = true;
 
-        frontier.Enqueue(startNode);
-        reached.Add(startCoordinates, startNode);
+        if (startNode != null)
+        {
+            frontier.Enqueue(startNode);
+            reached.Add(startCoordinates, startNode);
+        }
 
         while (frontier.Count > 0 && isRunning)
         {
+            if (currentSearchNode == null)
+            {
+                Debug.Log(1);
+            }
+
             currentSearchNode = frontier.Dequeue();
             currentSearchNode.isExplored = true;
             ExploreNeighbors();

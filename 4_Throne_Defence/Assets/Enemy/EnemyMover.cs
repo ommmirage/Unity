@@ -16,6 +16,7 @@ public class EnemyMover : MonoBehaviour
     void OnEnable()
     {
         ReturnToStart();
+        RecalculatePath(true);
     }
 
     void Awake() 
@@ -23,11 +24,6 @@ public class EnemyMover : MonoBehaviour
         enemy = FindObjectOfType<Enemy1>();
         gridManager = FindObjectOfType<GridManager>();
         pathfinder = FindObjectOfType<Pathfinder>();
-    }
-
-    void Start()
-    {
-        RecalculatePath(true);
     }
 
     void RecalculatePath(bool resetPath)
